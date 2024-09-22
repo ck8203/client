@@ -1,8 +1,9 @@
+import baseUrl from "./baseUrl";
 export default function Todo(props) {
   const { todo, setTodos } = props;
 
   const updateTodo = async (todoId, todoStatus) => {
-    const res = await fetch(`http://localhost:5000/api/todos/${todoId}`, {
+    const res = await fetch(`${baseUrl}/api/todos/${todoId}`, {
       method: "PUT",
       body: JSON.stringify({ status: todoStatus }),
       headers: {
@@ -24,7 +25,7 @@ export default function Todo(props) {
   };
 
   const deleteTodo = async (todoId) => {
-    const res = await fetch(`http://localhost:5000/api/todos/${todoId}`, {
+    const res = await fetch(`${baseUrl}/api/todos/${todoId}`, {
       method: "DELETE",
     });
     const json = await res.json();
